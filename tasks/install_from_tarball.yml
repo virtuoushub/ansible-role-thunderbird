@@ -1,0 +1,29 @@
+---
+- name: Download Thunderbird tarball.
+  become: yes
+  get_url:
+    url: "{{ thunderbird_download_url }}"
+    dest: "{{ thunderbird_download_directory }}/{{ thunderbird_download_tarball }}"
+
+- name: Create Thunderbird install directory.
+  become: yes
+  file:
+    path: "{{ thunderbird_install_directory }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Extract Thunderbird tarball.
+  become: yes
+  unarchive:
+    src: "{{ thunderbird_download_directory }}/{{ thunderbird_download_tarball }}"
+    dest: "{{ thunderbird_install_directory }}"
+    copy: no
+
+- name: Create symlink for Thunderbird binary.
+  file:
+    state: link
+    src: "{{ thunderbird_symlink_src }}"
+    dest: "{{ thunderbird_symlink_dest }}"
+  when: thunderbird_create_symlink == true

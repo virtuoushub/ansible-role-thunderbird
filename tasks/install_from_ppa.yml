@@ -1,0 +1,12 @@
+---
+- name: Add PPA for Thunderbird beta.
+  become: yes
+  apt_repository:
+    repo: ppa:mozillateam/thunderbird-next
+    state: present
+
+- name: Install Thunderbird beta.
+  become: yes
+  apt:
+    name: thunderbird
+    state: latest

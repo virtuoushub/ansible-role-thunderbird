@@ -1,0 +1,8 @@
+---
+# tasks file for thunderbird
+
+- include: install_from_ppa.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- include: install_from_tarball.yml
+  when: ansible_distribution == 'Debian'

@@ -1,0 +1,25 @@
+galaxy_info:
+  author: Conor Schaefer (@conorsch)
+  description: Installs Thunderbird beta.
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+        # Ansible Galaxy doesn't understand stretch and sid,
+        # but at least stretch does indeed work.
+        # - stretch
+        # - sid
+    - name: Ubuntu
+      versions:
+        - trusty
+        - vivid
+        - wily
+  galaxy_tags:
+    - workstation
+    - system
+    - graphical
+    - thunderbird
+    - email
+dependencies: []

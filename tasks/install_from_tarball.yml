@@ -22,6 +22,7 @@
     copy: no
 
 - name: Create symlink for Thunderbird binary.
+  become: yes
   file:
     state: link
     src: "{{ thunderbird_symlink_src }}"
